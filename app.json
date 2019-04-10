@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/order/order",
+    "pages/card/card",
+    "pages/orderinfo/orderinfo",
+    "pages/integral/integral" 
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#00CC6A",
+    "navigationBarTitleText": "欢迎光临",
+    "navigationBarTextStyle": "black"
+  }
+}
