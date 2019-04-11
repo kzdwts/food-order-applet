@@ -2,7 +2,7 @@
 
 .page{
   /*  伸缩布局*/
-    /* overflow-y:hidden;   */
+  /* overflow-y:hidden;   */
 }
 .order{
   /* background-color: #ECECEE; */
@@ -63,8 +63,9 @@
   left: 200rpx;
   margin-top:10rpx;
   margin-bottom: 10rpx;
-   /* border-radius:10rpx;  */
-  /* background-color: #ECECEE; */
+  margin-left: 5rpx;
+  border-radius:10rpx; 
+  background-color: #ECECEE;
   box-shadow:1rpx 1rpx 1rpx 1rpx #ECECEE;
 }
 

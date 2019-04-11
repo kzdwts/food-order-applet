@@ -55,13 +55,12 @@ Page({
    * 左侧-商品类别选中事件
    */
   clickView: function (event) {
-    debugger
     var goto = event.currentTarget.id
     this.setData({
       toView: goto,
       // index: goto.substring('1')
     })
-    console.log(this.data.toView)
+    // console.log(this.data.toView)
   },
   //addfood
   addfood: function (event) {
@@ -134,17 +133,19 @@ Page({
    * 菜单滚动时触发
    */
   leftmenu: function (event) {
-    var temp = tool.LaftMenu(this.data.listdata.data);
-    var len = temp.length;
+    // 获取商品类型的数量
+    var temp = tool.LaftMenu(this.data.listdata.data)
+    var len = temp.length
     var index = 0
     for (var i = 0; i < len; i++) {
-      if (temp[i] > event.detail.scrollTop+50) {
-        // console.log(temp[i]);
-        // console.log(event.detail.scrollTop);
+      if (temp[i] > event.detail.scrollTop) {
+        console.log('temp['+i+']=' + temp[i] + '---event.detail.scrollTop=' + event.detail.scrollTop);
+        // 在第i个类型的范围内
         index = i
         break
       }
     }
+    // console.log('this.data.index=' + this.data.index);
     if (index != this.data.index) {
       this.setData({
         index: index

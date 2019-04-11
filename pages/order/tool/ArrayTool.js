@@ -49,17 +49,15 @@ function FoodCount(array) {
 function LaftMenu(array) {
   var temp = [];
   //获得长度 表示有几个data 一个data 32rpx
-  var grouplength = array.length;
-  // console.log('grouplength=' + grouplength);
+  var itemListLen = array.length
   //取得结束坐标
-  for (var k = 0; k < grouplength; k++) {
+  for (var k = 0; k < itemListLen; k++) {
     if (k == 0) {
       temp[k] = array[k].itemList.length * 90
-      // console.log('temp[' + k + ']=' + temp[k]);
+      
       continue
     }
-    temp[k] = (array[k].itemList.length * 90) + temp[k - 1]
-    // console.log('temp[' + k+']=' + temp[k]);
+    temp[k] = (array[k].itemList.length * 90) + temp[k - 1] - k * 50
   }
   return temp;
 }
