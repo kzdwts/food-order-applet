@@ -25,11 +25,14 @@ function GroupCount(obj, i, index, algorithm) {
   // I 第几组
   // Index 第几个商品
   if (algorithm == "plus") {
-    obj.Group[i].Foods[index].Count = parseInt(obj.Group[i].Foods[index].Count) + 1
+    // 如果商品数量是null，置为0
+    obj.data[i].itemList[index].itemNum = ((obj.data[i].itemList[index].itemNum == null) ? 0 : obj.data[i].itemList[index].itemNum) + 1
   }
   if (algorithm == "less") {
-    if (parseInt(obj.Group[i].Foods[index].Count) >= 1) {
-      obj.Group[i].Foods[index].Count = parseInt(obj.Group[i].Foods[index].Count) - 1
+    console.log(obj.data[i].itemList[index].itemNum);
+    if (parseInt(obj.data[i].itemList[index].itemNum) >= 1) {
+      
+      obj.data[i].itemList[index].itemNum = parseInt(obj.data[i].itemList[index].itemNum) - 1
     }
   }
   return obj

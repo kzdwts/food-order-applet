@@ -29,7 +29,7 @@
             <!--商品名称  -->
             <view class='food-name'>{{food.itemName}}
               <!--商品价格  -->
-              <view class='food-price'>￥ {{food.itemPrice}} </view>
+              <view class='food-price'>￥{{food.itemPrice}} </view>
             </view>
             <!--商品添加控件  -->
             <view class="food-controller">
@@ -37,8 +37,8 @@
               </view>
 
               <view class="price-count">
-                <view class='price-count-price' hidden="{{food.itemNum==0}}">
-                  0</view>
+                <view class='price-count-price'>
+                  {{food.itemNum == null ? 0 : food.itemNum}}</view>
               </view>
               <view class='icon-remove_circle_outline' id="{{food.id}}" style='color:#4d939f' bindtap='deletefood' data-i='{{i}}' data-index="{{foodindex}}" hidden="{{food.Count==0}}">
               </view>
@@ -61,14 +61,14 @@
         </view>
       </view>
     </view>
-    <view class='shopping-clearing'>选好了</view>
+    <view class='{{foodcount > 0 ? "shopping-ok" : "shopping-clearing"}}' bindtap='checkSubmit'>选好了</view>
   </view>
 </view>
 
 <!--show cart list -->
 <view class="show" hidden='{{showcart}}' >
 <view class='show-cover' bind:touchstart='showcart' ></view>
-  <scroll-view class="show-cart" scroll-y="true" style='height:{{listmenu.length*30}}px;'>
+  <scroll-view class="show-cart" scroll-y="true" style='height:{{listmenu.length*300}}rpx;'>
     <view class='show-list' wx:for="{{listmenu}}" wx:for-index="ix" wx:for-item="it" wx:key="m">
       <view class='show-list-title'>{{it.foodname}} </view>
       <view class='show-list-controller'>
@@ -77,7 +77,7 @@
         </view>
         <view class='show-list-controller-num'>{{it.count}}</view>
         <view class='show-list-controller-delete'>
-          <text class='icon-remove_circle_outline' style='color:#4d939f;font-size:40prx' bind:touchstart='deletefood' data-i='{{it.groupi}}' data-index='{{it.foodindex}}' data-foodname='{{it.itemName}}' id='{{it.id}}' data-price='{{it.price}}'></text>
+          <text class='icon-remove_circle_outline' style='color:#4d939f;font-size:40prx' bind:touchstart='deletefood' data-i='{{it.groupi}}' data-index='{{it.foodindex}}' data-foodname='{{it.foodname}}' id='{{it.foodid}}' data-price='{{it.price}}'></text>
         </view>
       </view>
     </view>

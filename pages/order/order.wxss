@@ -140,7 +140,8 @@
 .shopping-cart{
   height: 100%;
   width: 70%;
-  background-color:#acd0ce;
+  background-color:#666666;
+  opacity: 0.95;
   box-shadow:1px 1px 1px 1px #ECECEE inset;
 }
 .count-cart{
@@ -162,6 +163,18 @@
   width:30%;
   background-color: #ECECEE;
   box-shadow:1px 1px 1px 1px #ECECEE inset;
+}
+
+.shopping-ok{
+  position: relative;
+  font-size: 40rpx;
+  text-align: center;
+  padding-top: 30rpx;
+  color: #3e3b47;
+  font-weight: bolder;
+  width:30%;
+  background-color: #FA470A;
+  /* box-shadow:1px 1px 1px 1px #ECECEE inset; */
 }
 
 .shopping-cart > view{

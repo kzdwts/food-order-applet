@@ -62,18 +62,23 @@ Page({
     })
     // console.log(this.data.toView)
   },
-  //addfood
+  
+  /**
+   * 向购物车添加
+   */
   addfood: function (event) {
     var foodid = event.currentTarget.id                       // 获取商品ID
-    var foodprice = event.currentTarget.dataset.price //food price
+    var foodprice = event.currentTarget.dataset.price         //food price
     var i = event.currentTarget.dataset.i                    //group for  [i] 
     var index = event.currentTarget.dataset.index     //group[i]foods[index]
     var foodname = event.currentTarget.dataset.foodname //foodname
+    // 在原购物车的基础上新增此商品
     var newdata = tool.AddCount(this.data.selectedmenu, foodid, foodprice, foodname, i, index)
+    console.log(newdata)
     var newobj = tool.GroupCount(this.data.listdata, i, index, "plus")
     this.setData({
-      selectedmenu: newdata,
-      listdata: newobj
+      selectedmenu: newdata
+      ,listdata: newobj
     })
     this.setData({
       shoppingCartPrice: common.upshopping(this.data.selectedmenu), // 更新购物车 显示的价格
@@ -81,7 +86,10 @@ Page({
       listmenu: tool.HashTointArray(this.data.selectedmenu) // 刷新购物车列表
     })
   },
-  // delete item food
+
+  /**
+   * 购物车删除商品
+   */
   deletefood: function (event) {
     var foodid = event.currentTarget.id   // 获取商品ID
     var i = event.currentTarget.dataset.i                    //group for  [i] 
@@ -113,7 +121,6 @@ Page({
       // console.log(this.data.listmenu)
       // console.log(this.data.shoppingCartPrice)
       // 刷新购物车列表
-
       return
     }
     if (this.data.selectedmenu[foodid] != null && this.data.selectedmenu[foodid].count > 1) {
@@ -179,6 +186,29 @@ Page({
   },
   test:function(){
     
+  },
+
+/**
+ * 提交订单校验
+ */
+  checkSubmit: function() {
+    if(this.data.foodcount <= 0) {
+      console.log('购物车没有商品')
+      return
+    }
+
+    // 购物车有商品，弹出提示框
+    wx.showModal({
+      title: '提示',
+      content: '这是一个模态弹窗',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   }
 
 })  
