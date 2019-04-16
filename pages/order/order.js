@@ -74,7 +74,6 @@ Page({
     var foodname = event.currentTarget.dataset.foodname //foodname
     // 在原购物车的基础上新增此商品
     var newdata = tool.AddCount(this.data.selectedmenu, foodid, foodprice, foodname, i, index)
-    console.log(newdata)
     var newobj = tool.GroupCount(this.data.listdata, i, index, "plus")
     this.setData({
       selectedmenu: newdata
@@ -146,7 +145,7 @@ Page({
     var index = 0
     for (var i = 0; i < len; i++) {
       if (temp[i] > event.detail.scrollTop) {
-        console.log('temp['+i+']=' + temp[i] + '---event.detail.scrollTop=' + event.detail.scrollTop);
+        // console.log('temp['+i+']=' + temp[i] + '---event.detail.scrollTop=' + event.detail.scrollTop);
         // 在第i个类型的范围内
         index = i
         break
