@@ -1,5 +1,6 @@
 // 菜单接口
 const GET_MENU_URL = '/applet/item/foodList'
+const SAVE_ORDER_URL = '/applet/order/saveOrder'
 var common = require('../../utils/common.js')
 var tool = require('/tool/ArrayTool.js')
 
@@ -197,17 +198,52 @@ Page({
     }
 
     // 购物车有商品，弹出提示框
-    wx.showModal({
-      title: '提示',
-      content: '这是一个模态弹窗',
-      success(res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        } else if (res.cancel) {
-          console.log('用户点击取消')
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '这是一个模态弹窗',
+    //   success(res) {
+    //     if (res.confirm) {
+    //       console.log('用户点击确定')
+    //     } else if (res.cancel) {
+    //       console.log('用户点击取消')
+    //     }
+    //   }
+    // })
+
+    // 获取购物车数据
+    var menus = this.data.listmenu
+    console.log(menus)
+    var shoppingCart = []
+    for(let i = 0; i < menus.length; i++) {
+      var data = {"foodId": menus[i].foodid, "count": menus[i].count};
+      shoppingCart.push(data);
+    }
+    console.log(shoppingCart);
+    // 下单请求
+    wx.request({
+      url: app.data.baseUrl + SAVE_ORDER_URL,
+      method: 'POST',
+      data: shoppingCart,
+      header: {
+        'Accept': 'application/json'
+      },
+      success: (res) => {
+        wx.hideLoading()
+        console.log(res.data);
+        // 判断是否请求数据成功
+        if(res.data.status == '0') {
+          console.log('请求数据成功，且格式正确');
+          // 更新页面数据
+          this.setData({
+            listdata: res.data
+          })
+        } else {
+          console.log('数据格式错误');
         }
+       
       }
     })
+
   }
 
 })  
