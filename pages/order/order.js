@@ -210,6 +210,9 @@ Page({
     //   }
     // })
 
+    // 获取用户id
+    var userId = wx.getStorageSync("USER_ID");
+
     // 获取购物车数据
     var menus = this.data.listmenu
     console.log(menus)
@@ -223,7 +226,11 @@ Page({
     wx.request({
       url: app.data.baseUrl + SAVE_ORDER_URL,
       method: 'POST',
-      data: shoppingCart,
+      data: {
+        shopId: app.data.shopId,
+        userId,
+        shoppingCart
+      },
       header: {
         'Accept': 'application/json'
       },
@@ -233,16 +240,31 @@ Page({
         // 判断是否请求数据成功
         if(res.data.status == '0') {
           console.log('请求数据成功，且格式正确');
-          // 更新页面数据
-          this.setData({
-            listdata: res.data
+          // 弹框提示，下单成功
+          wx.showModal({
+            title: 'SUCCESS',
+            content: '下单成功，谢谢',
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+                // 跳转到首页
+                wx.navigateTo({
+                  url: '/pages/index/index',
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
           })
+          
         } else {
           console.log('数据格式错误');
         }
        
       }
     })
+
+
 
   }
 
