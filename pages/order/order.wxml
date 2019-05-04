@@ -1,6 +1,6 @@
 <view class="order">
   <view class="ad">
-    <view class="ad-text">凡在本店消费满20赠送饮料一瓶</view>
+    <view class="ad-text">凡在本店消费满100赠送饮料一瓶</view>
   </view>
   <!--左侧菜单-->
   <view class="list-left-menu" style="height:1500rpx">
