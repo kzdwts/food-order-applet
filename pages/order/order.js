@@ -242,8 +242,8 @@ Page({
           console.log('请求数据成功，且格式正确');
           // 弹框提示，下单成功
           wx.showModal({
-            title: 'SUCCESS',
-            content: '下单成功，谢谢',
+            title: '下单成功',
+            content: '后厨正在配菜，请稍后片刻',
             success(res) {
               if (res.confirm) {
                 console.log('用户点击确定')
