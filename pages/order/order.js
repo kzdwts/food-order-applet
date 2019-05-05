@@ -197,19 +197,6 @@ Page({
       return
     }
 
-    // 购物车有商品，弹出提示框
-    // wx.showModal({
-    //   title: '提示',
-    //   content: '这是一个模态弹窗',
-    //   success(res) {
-    //     if (res.confirm) {
-    //       console.log('用户点击确定')
-    //     } else if (res.cancel) {
-    //       console.log('用户点击取消')
-    //     }
-    //   }
-    // })
-
     // 获取用户id
     var userId = wx.getStorageSync("USER_ID");
 
@@ -244,6 +231,7 @@ Page({
           wx.showModal({
             title: '下单成功',
             content: '后厨正在配菜，请稍后片刻',
+            showCancel: false,
             success(res) {
               if (res.confirm) {
                 console.log('用户点击确定')

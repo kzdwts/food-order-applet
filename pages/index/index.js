@@ -1,5 +1,5 @@
 //index.js
-const APPLET_USER_LOGIN_URL = 'http://127.0.0.1:8081/rest/applet/user/login';
+const APPLET_USER_LOGIN_URL = '/applet/user/login';
 //获取应用实例
 var common = require('../../utils/common.js')
 const app = getApp()
@@ -35,13 +35,35 @@ Page({
     common.goorder()
   },
   gocard: function () {
-    common.gocard()
+    console.log('卡包')
+    return
+    // common.gocard()
   },
   goorderinfo:function(){
-    common.goorderinfo()
+    console.log('我的订单')
+    // 获取用户id
+    var userId = wx.getStorageSync("USER_ID")
+    if (userId != null && userId != '') {
+      // 进入我的订单页面
+      common.goorderinfo()
+    } else {
+      console.log("还没有登录哦");
+      wx.showModal({
+        content: '还没有登录哦！',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            //console.log('点击确定')
+          }
+        }
+      });
+    }
+    
   },
   gointegral:function(){
-    common.gointegral()
+    console.log('积分')
+    return
+    // common.gointegral()
   },
 
   /**
@@ -97,7 +119,7 @@ Page({
 
             // 发送请求到foodorder服务器
             wx.request({
-              url: APPLET_USER_LOGIN_URL,
+              url: app.data.baseUrl +  APPLET_USER_LOGIN_URL,
               data: {
                 code: res.code,
                 wechatUser: this.data.userInfo

@@ -1,5 +1,8 @@
 // pages/orderinfo/orderinfo.js
 var tool = require('/tool/tool.js')
+const GET_ORDER_LIST = '/applet/order/listOrderByUserId'
+
+const app = getApp()
 
 Page({
 
@@ -21,19 +24,27 @@ Page({
     wx.showLoading({
       title: '努力加载中',
     })
+    // 从缓存获取用户id
+    var userId = wx.getStorageSync("USER_ID")
     wx.request({
-      url: 'https://easy-mock.com/mock/5aa916df93041f109b6e8fba/example/api/orderinfo',
+      url: app.data.baseUrl + GET_ORDER_LIST,
       method:'GET',
-      data:{},
+      data:{userId: userId},
       header:{
         'Accept': 'application/json'
       },
       success:function(res){
-        var newIntegral = tool.CountIntegral(res.data.OrderInfo)
-        there.setData({
-          orderInfo:res.data,
-          integral:newIntegral
-        })
+        if(res.data.status == '0') {
+          // console.log(res);
+          var newIntegral = tool.CountIntegral(res.data.data)
+          there.setData({
+            orderInfo:res.data,
+            integral:newIntegral
+          })
+        } else {
+          console.log("暂无订单信息");
+        }
+       
         wx.hideLoading()
         //console.log(there.data.orderInfo.OrderInfo[0])
       }
@@ -88,9 +99,15 @@ Page({
   onShareAppMessage: function () {
   
   },
+
+  /**
+   * 订单详情点击事件
+   * @param {*} event 
+   */
   details:function(event){
     this.onshowlayer()
-    var newdetails = this.data.orderInfo.OrderInfo[event.currentTarget.id]
+    console.log(this.data)
+    var newdetails = this.data.orderInfo.data[event.currentTarget.id]
     console.log(newdetails)
     this.setData({
       details:newdetails

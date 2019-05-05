@@ -1,6 +1,6 @@
 //app.js
 // 换取 openId, sessionKey, unionId接口地址
-const GETOPENID_URL = 'http://localhost:8081/rest/small/user/'
+const GETOPENID_URL = '/small/user/'
 App({
 
   data:{

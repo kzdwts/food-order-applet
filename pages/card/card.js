@@ -37,21 +37,21 @@ Page({
         })
         
         // 获取卡包数据
-        wx.request({
-          url: 'https://easy-mock.com/mock/5aa916df93041f109b6e8fba/example/api/card',
-          method: 'GET',
-          data: {},
-          header: {
-            'Accept': 'application/json'
-          },
-          success: function (res) {
-            console.log(res)
-            there.setData({
-              cardList: res.data
-            })
-            wx.hideLoading()
-          }
-        })
+        // wx.request({
+        //   url: 'https://easy-mock.com/mock/5aa916df93041f109b6e8fba/example/api/card',
+        //   method: 'GET',
+        //   data: {},
+        //   header: {
+        //     'Accept': 'application/json'
+        //   },
+        //   success: function (res) {
+        //     console.log(res)
+        //     there.setData({
+        //       cardList: res.data
+        //     })
+        //   }
+        // })
+        wx.hideLoading()
       }
     })
   },
