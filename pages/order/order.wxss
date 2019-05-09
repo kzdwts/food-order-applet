@@ -207,6 +207,7 @@
    font-size: 42rpx;
   color: #ececee;
   font-weight: bold;
+  margin-left: -50rpx;
 }
 
 .padding{

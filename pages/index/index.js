@@ -11,11 +11,11 @@ Page({
     imgUrls: [
       {
         // link: '/pages/index/index',
-        url: '/static/imgs/sw1.jpg'
+        url: 'https://img.kangyong.top/group1/M00/00/00/rBOkeVzTlGiAYYQ-AAKkGqKdp4Q332_big.jpg'
       }, {
-        url: '/static/imgs/sw2.jpg'
+        url: 'https://img.kangyong.top/group1/M00/00/00/rBOkeVzTlNKAb5xGAANNPjgzPpg509_big.jpg'
       }, {
-        url: '/static/imgs/sw3.jpg'
+        url: 'https://img.kangyong.top/group1/M00/00/00/rBOkeVzTlSmABfZuAAGxbPLzidk592_big.jpg'
       }
     ],
     indicatorDots: false,

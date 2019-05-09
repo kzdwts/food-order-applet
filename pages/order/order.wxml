@@ -55,7 +55,7 @@
     <!--购物车  -->
     <view class='shopping-cart' bindtap='showcart'>
       <view class='icon-shopping_cart:before' style='color:#4d939f;'>
-        <view class='cart-price' wx:if="{{shoppingCartPrice>0}}">{{shoppingCartPrice}}</view>
+        <view class='cart-price' wx:if="{{shoppingCartPrice>0}}">总金额：{{shoppingCartPrice/100}}</view>
         <view class='count-cart' wx:if="{{foodcount>0}}">
           <text class='weui-badge'>{{foodcount}}</text>
         </view>
