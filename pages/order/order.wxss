@@ -99,22 +99,26 @@
 .food-name{
   position: relative;
   top: 20rpx;
-  left: 25rpx;
+  left: 15rpx;
   font-size: 30rpx;
   color: #3e3b47;
-  height: 50rpx
+  height: 50rpx;
+  width:180rpx;
+  white-space: nowrap;
 }
 
 .food-price{
   position: relative;
   top:30rpx;
   color: #1d2025;
+  height: 50rpx;
+  width:180rpx;
 }
 
 .food-controller{
   position: relative;
   top:60rpx;
-  left: 80rpx;
+  left: 20rpx;
   height: 100rpx;
   display: flex;
 }
@@ -122,8 +126,10 @@
 .price-count-price{
   position: relative;
   bottom: 10rpx;
-  margin-left: 10rpx;
-  margin-right: 10rpx;
+  width:60rpx;
+  text-align: center;
+
+
   color: #3e3b47;
 }
 

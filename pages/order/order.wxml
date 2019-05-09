@@ -29,7 +29,7 @@
             <!--商品名称  -->
             <view class='food-name'>{{food.itemName}}
               <!--商品价格  -->
-              <view class='food-price'>￥{{food.itemPrice}} </view>
+              <view class='food-price'>￥{{food.itemPrice/100}} </view>
             </view>
             <!--商品添加控件  -->
             <view class="food-controller">

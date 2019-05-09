@@ -18,7 +18,7 @@
       </view>
       <view class='user-info-card-box-right'>
         <text class='title'>{{order.OrderId}} </text>
-        <text class='context'>{{order.payment}}RMB 积分{{order.payment}}</text>
+        <text class='context'>{{order.payment/100}}RMB</text>
         <text class='time'>{{order.createTime}}</text>
         <button type='warn' id='{{i}}'  class='btn' bind:tap='details'>查看明细</button>
       </view>
@@ -40,8 +40,8 @@
   >
     <view class='order-info-box-menu-name'>{{orderItem.itemName}}</view>
     <view class='order-info-box-menu-number'>{{orderItem.buyNum}}</view>
-    <view class='order-info-box-menu-price'>{{orderItem.itemPrice}}</view>
+    <view class='order-info-box-menu-price'>{{orderItem.itemPrice/100}}</view>
   </view>
   <view style='font-size:30rpx;margin-top:20rpx;'>优惠：0 Rmb</view>
-  <view style='font-size:30rpx;margin-top:20rpx;'>总计：{{details.payment}} Rmb</view>
+  <view style='font-size:30rpx;margin-top:20rpx;'>总计：{{details.payment/100}} Rmb</view>
 </scroll-view>
