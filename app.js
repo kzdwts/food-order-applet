@@ -4,7 +4,7 @@ const GETOPENID_URL = '/small/user/'
 App({
 
   data:{
-    baseUrl: 'http://localhost:8081/rest', 
+    baseUrl: 'https://rest.kangyong.top/rest', 
     shopId: '155462025952137',
     userInfo:{}
   },
